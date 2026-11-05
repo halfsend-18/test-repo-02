@@ -3,6 +3,9 @@
 #
 # This file configures fullsend for per-repo installation mode.
 # See https://fullsend.sh/docs/guides/infrastructure/layered-config-reference
+agents:
+    - name: review
+      source: harness/review.yaml
 mint_url: https://bt-6a2ef94d-agents-bt-mint.fullsend-ai.workers.dev
 inference:
     project: it-gcp-konflux-dev-fullsend
