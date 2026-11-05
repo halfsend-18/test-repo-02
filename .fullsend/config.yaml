@@ -1,0 +1,9 @@
+# fullsend per-repo configuration
+# https://github.com/fullsend-ai/fullsend
+#
+# This file configures fullsend for per-repo installation mode.
+# See https://fullsend.sh/docs/guides/infrastructure/layered-config-reference
+mint_url: https://bt-6a2ef94d-agents-bt-mint.fullsend-ai.workers.dev
+inference:
+    project: it-gcp-konflux-dev-fullsend
+    wif_provider: projects/855403973659/locations/global/workloadIdentityPools/fullsend-inference/providers/gh-halfsend-18-test-repo-02
