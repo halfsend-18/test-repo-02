@@ -1,0 +1,10 @@
+base: https://raw.githubusercontent.com/fullsend-ai/agents/d3566f0121a05d2ac8d642c1a96b7488d12fde4c/harness/review.yaml#sha256=c6db342731181835bf1f006cf9fda21e84e0771995d8436b4465d2ce26bb95bc
+model: haiku
+effort: low
+env:
+  sandbox:
+    ANTHROPIC_DEFAULT_OPUS_MODEL: claude-haiku-5-5
+    ANTHROPIC_DEFAULT_SONNET_MODEL: claude-haiku-5-5
+skills:
+  - skills/pr-review:
+      sub-agents/behaviour-canary.md: agents/behaviour-canary.md
