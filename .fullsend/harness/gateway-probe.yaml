@@ -1,0 +1,12 @@
+agent: agents/gateway-probe.md
+role: triage
+slug: fullsend-ai-gateway-probe
+image: ghcr.io/fullsend-ai/fullsend-sandbox:latest
+# No network rules of its own, so the only route to the gateway host
+# is the inspected one from the gateway profile the runner renders
+# for the configured block (node only, POST /v1/chat/completions).
+policy: policies/base.yaml
+trigger: |
+  event.entity.kind == "work_item"
+  && event.transition.kind == "label_changed"
+  && event.transition.label.name == "ready-for-gateway-probe"
