@@ -1,18 +1,16 @@
-allowed_remote_resources:
-    - https://raw.githubusercontent.com/fullsend-ai/fullsend/
-    - https://raw.githubusercontent.com/fullsend-ai/agents/
-inference:
-    gateway:
-        audience: fullsend-e2e-gateway
-        models:
-            claude-haiku-5-5:
-                api: anthropic-messages
-                compat:
-                    supportsStrictTools: false
-        url: https://fullsend-e2e-gateway-208332380190.us-east5.run.app
-    project: it-gcp-konflux-e2e-fullsend
-    wif_provider: projects/208332380190/locations/global/workloadIdentityPools/fullsend-inference/providers/gh-halfsend-18-test-repo-02
-mint_url: https://bt-c1ea98e6-bt-mint.fullsend-ai.workers.dev
+# fullsend per-repo configuration
+# https://github.com/fullsend-ai/fullsend
+#
+# This file configures fullsend for per-repo installation mode.
+# See https://fullsend.sh/docs/guides/infrastructure/layered-config-reference
+version: "1"
+tracker:
+    github:
+        allowed_targets:
+            repos:
+                - fullsend-ai/fullsend
+                - fullsend-ai/agents
+runtime: dummy
 roles:
     - triage
     - coder
@@ -20,11 +18,21 @@ roles:
     - fix
     - retro
     - prioritize
-runtime: dummy
-tracker:
-    github:
-        allowed_targets:
-            repos:
-                - fullsend-ai/fullsend
-                - fullsend-ai/agents
-version: "1"
+agents:
+    - name: gateway-probe
+      source: harness/gateway-probe.yaml
+allowed_remote_resources:
+    - https://raw.githubusercontent.com/fullsend-ai/fullsend/
+    - https://raw.githubusercontent.com/fullsend-ai/agents/
+mint_url: https://bt-c1ea98e6-bt-mint.fullsend-ai.workers.dev
+inference:
+    project: it-gcp-konflux-e2e-fullsend
+    wif_provider: projects/208332380190/locations/global/workloadIdentityPools/fullsend-inference/providers/gh-halfsend-18-test-repo-02
+    gateway:
+        url: https://fullsend-e2e-gateway-208332380190.us-east5.run.app
+        audience: fullsend-e2e-gateway
+        models:
+            claude-haiku-5-5:
+                api: anthropic-messages
+                compat:
+                    supportsStrictTools: false
